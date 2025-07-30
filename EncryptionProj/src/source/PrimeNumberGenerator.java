@@ -3,6 +3,10 @@ import java.util.Random;
 
 public class PrimeNumberGenerator {
 	
+	//private int primeRange;
+	/*limit prime range to 50, 
+	change later or something idk
+	I mean, that is only 15 possible primes*/
 	
     boolean isPrime(int n)
     {
@@ -18,20 +22,20 @@ public class PrimeNumberGenerator {
         return true;
     }
     
-    public  void CreatePri() {
+    public  int CreatePri(int primeRange) {
 		Random rand = new Random();
     	int n;
 		do {
-		n = rand.nextInt(50);
-		System.out.println(n);
-		int num = n;
-        if (isPrime(num)) {
-            System.out.println(num + " is prime");
-        }
-        else {
-            System.out.println(num + " is not prime");
-        }
+			n = rand.nextInt(primeRange);
+			System.out.println(n);
+			int num = n;
+	        //if (isPrime(num)) {
+	       //     System.out.println(num + " is prime");
+	        //}
+	        //else {
+	           // System.out.println(num + " is not prime");
+	        //}
 		}while (isPrime(n)!= true);
-
+		return n;
     }
 }
