@@ -37,6 +37,7 @@ public class Main {
 		System.out.println(prime1);
 		System.out.println("Second prime is: ");
 		System.out.println(prime2);
+		System.out.println("Prime 1 x Prime 2: ");
 		System.out.println(RSAmod);
 		System.out.println("EPF: ");
 		System.out.println(EPF);
