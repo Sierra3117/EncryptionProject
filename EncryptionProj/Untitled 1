@@ -1,0 +1,18 @@
+	static int inverseMod(int A, int M) {
+		boolean found = false;
+		int inverse = 1 + M;
+		System.out.println("InverserMOd");
+		System.out.println(inverse);
+		System.out.println(A);
+		while (found != true) {
+			if ((inverse % A) == 0) {
+				return(inverse/A);
+			}
+			else {
+				inverse += M;
+			}
+		}
+
+		return 1;
+	}
+	

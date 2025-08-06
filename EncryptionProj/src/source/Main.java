@@ -23,11 +23,15 @@ public class Main {
 		RSAmod = prime1 * prime2;
 		EPF =  (prime1-1)*(prime2-1);	
 		coprimeE = KeyGen.generateE(EPF, RSAmod);//PriGenerator.CreatePri(EPF);
-		//d = (Math.pow(coprimeE, -1))%EPF;
-		
+		do {
+			d = KeyGen.modInverse(coprimeE, EPF);
+		}
+		while (d == coprimeE);
 	}
+	
 
 	
+
 	public void PrintString() {
 		System.out.println("First prime is: ");
 		System.out.println(prime1);
@@ -37,12 +41,19 @@ public class Main {
 		System.out.println("EPF: ");
 		System.out.println(EPF);
 		System.out.println(coprimeE);
+		System.out.println("D");
+		System.out.println(d);
 	}
 	public static void main(String[] args) {
 		Main main = new Main();
 		main.KeyGen();
 		main.PrintString();
+		
+        
 
+      
+       //System.out.println(modInverse(A, M));
+       // System.out.println(inverseMod(A, M));
 		
 	}
 
