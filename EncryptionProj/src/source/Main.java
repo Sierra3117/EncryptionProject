@@ -5,13 +5,12 @@ import java.lang.Math;
 
 public class Main {
 	
-	
 	private static int RSAmod;
 	private int prime1;
 	private int prime2;
 	private int EPF;// Euler phi function 
-	private int coprimeE;
-	private double d;
+	private int coprimeE;//encryption key
+	private double d;//decryption key is a double for some reason
 	
 
 	
@@ -28,8 +27,6 @@ public class Main {
 		}
 		while (d == coprimeE);
 	}
-	
-
 	
 
 	public void PrintString() {
@@ -51,8 +48,6 @@ public class Main {
 		main.PrintString();
 		
         
-
-      
        //System.out.println(modInverse(A, M));
        // System.out.println(inverseMod(A, M));
 		
