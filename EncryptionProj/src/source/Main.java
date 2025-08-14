@@ -9,7 +9,7 @@ public class Main {
 	private int prime1;
 	private int prime2;
 	private int EPF;// Euler phi function 
-	private int coprimeE;//encryption key
+	private static int coprimeE;//encryption key
 	private double d;//decryption key is a double for some reason
 	
 
@@ -46,7 +46,8 @@ public class Main {
 		Main main = new Main();
 		main.KeyGen();
 		main.PrintString();
-		
+		EncryptDecrypt Call = new EncryptDecrypt();
+		System.out.println(Call.Encrypt(coprimeE, RSAmod, 5));
         
        //System.out.println(modInverse(A, M));
        // System.out.println(inverseMod(A, M));
