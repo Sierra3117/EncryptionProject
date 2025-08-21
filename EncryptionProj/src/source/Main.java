@@ -1,6 +1,7 @@
 package source;
 import java.util.Random;
 import java.lang.Math;
+import java.math.BigInteger;
 
 
 public class Main {
@@ -10,15 +11,15 @@ public class Main {
 	private int prime2;
 	private int EPF;// Euler phi function 
 	private static int coprimeE;//encryption key
-	private double d;//decryption key is a double for some reason
+	private static double d;//decryption key is a double for some reason
 	
 
 	
 	public   void KeyGen() {
 		PrimeNumberGenerator PriGenerator = new PrimeNumberGenerator();
 		KeyGenerator KeyGen = new KeyGenerator();
-		prime1 = PriGenerator.CreatePri(50);
-		prime2 = PriGenerator.CreatePri(50);
+		prime1 = PriGenerator.CreatePri(15);
+		prime2 = PriGenerator.CreatePri(15);
 		RSAmod = prime1 * prime2;
 		EPF =  (prime1-1)*(prime2-1);	
 		coprimeE = KeyGen.generateE(EPF, RSAmod);//PriGenerator.CreatePri(EPF);
@@ -38,17 +39,23 @@ public class Main {
 		System.out.println(RSAmod);
 		System.out.println("EPF: ");
 		System.out.println(EPF);
+		System.out.println("E: ");
 		System.out.println(coprimeE);
-		System.out.println("D");
+		System.out.println("D: ");
 		System.out.println(d);
 	}
 	public static void main(String[] args) {
 		Main main = new Main();
 		main.KeyGen();
 		main.PrintString();
+		BigInteger encrypted;
 		EncryptDecrypt Call = new EncryptDecrypt();
-		System.out.println(Call.Encrypt(coprimeE, RSAmod, 5));
-        
+		System.out.println("Encrypted val: ");
+		encrypted = Call.Encrypt(coprimeE, RSAmod, 5);
+		System.out.println(encrypted);
+        System.out.println("Decrypted: ");
+        //System.out.println(Call.Dencrypt(d, RSAmod, encrypted));
+
        //System.out.println(modInverse(A, M));
        // System.out.println(inverseMod(A, M));
 		
