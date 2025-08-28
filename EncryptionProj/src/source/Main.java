@@ -11,24 +11,29 @@ public class Main {
 	private int prime2;
 	private int EPF;// Euler phi function 
 	private static int coprimeE;//encryption key
-	private static double d;//decryption key is a double for some reason
+	private static int d;//decryption key is a double for some reason
 	
 
 	
 	public   void KeyGen() {
 		PrimeNumberGenerator PriGenerator = new PrimeNumberGenerator();
 		KeyGenerator KeyGen = new KeyGenerator();
-		prime1 = PriGenerator.CreatePri(15);
-		prime2 = PriGenerator.CreatePri(15);
+		prime1 = PriGenerator.CreatePri(25);
+		prime2 = PriGenerator.CreatePri(25);
 		RSAmod = prime1 * prime2;
 		EPF =  (prime1-1)*(prime2-1);	
 		coprimeE = KeyGen.generateE(EPF, RSAmod);//PriGenerator.CreatePri(EPF);
-		do {
-			d = KeyGen.modInverse(coprimeE, EPF);
-		}
-		while (d == coprimeE);
+		d = KeyGen.modInverse(coprimeE, EPF);
+
 	}
-	
+
+	public void checkKeyGen() {
+		Main main = new Main();
+		main.KeyGen();
+		if (d == coprimeE && d == 1 && d == 0) {
+			main.KeyGen();
+		}
+	}
 
 	public void PrintString() {
 		System.out.println("First prime is: ");
@@ -44,9 +49,13 @@ public class Main {
 		System.out.println("D: ");
 		System.out.println(d);
 	}
+	
+	//Add garbage collection
+	
 	public static void main(String[] args) {
 		Main main = new Main();
-		main.KeyGen();
+		main.checkKeyGen();
+		System.gc();
 		main.PrintString();
 		BigInteger encrypted;
 		EncryptDecrypt Call = new EncryptDecrypt();
@@ -54,7 +63,7 @@ public class Main {
 		encrypted = Call.Encrypt(coprimeE, RSAmod, 5);
 		System.out.println(encrypted);
         System.out.println("Decrypted: ");
-        //System.out.println(Call.Dencrypt(d, RSAmod, encrypted));
+        System.out.println(Call.Decrypt(d, RSAmod, encrypted));
 
        //System.out.println(modInverse(A, M));
        // System.out.println(inverseMod(A, M));

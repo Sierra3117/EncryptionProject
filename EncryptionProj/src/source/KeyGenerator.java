@@ -25,15 +25,20 @@ public class KeyGenerator {
 	
 	public int generateE(int EPFentry, int primeMult) {
 		PrimeNumberGenerator PriGenerator = new PrimeNumberGenerator();
+		System.out.println("E key gen here");
 		boolean found = false;
 		int e = 0;
-		while (found != true) {
+		while ((found != true) && (e == 0)) {
 			int CoPrime = PriGenerator.CreatePri(EPFentry);
 			if ((coprime( CoPrime, primeMult) == true) & (coprime(CoPrime, EPFentry) == true)){
 				found = true;
+				System.out.println("Found is true");
 				e = CoPrime;
 			}
 		}
+		//add fix for when is is still 0
+		System.out.println("E key gen done");
 		return e;
 	}
+	
 }

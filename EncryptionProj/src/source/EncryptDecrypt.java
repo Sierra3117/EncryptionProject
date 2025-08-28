@@ -15,10 +15,14 @@ public class EncryptDecrypt {
 		return(Temp1);
 	}
 	
-	public double Dencrypt(double d, double n, double encrypted) {
-		double DecryptedVal;
-		DecryptedVal = (Math.pow(encrypted, d) % n);
-		return(DecryptedVal);
+	public BigInteger Decrypt(int d, int n, BigInteger encrypted) {
+		BigInteger Temp1;
+		BigInteger PrimesProduct = BigInteger.valueOf(n);
+		Temp1 = encrypted
+				.pow(d)
+				.mod(PrimesProduct);
+
+		return(Temp1);
 	}
 
 }

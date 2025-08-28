@@ -29,13 +29,8 @@ public class PrimeNumberGenerator {
 			n = rand.nextInt(primeRange);
 			System.out.println(n);
 			int num = n;
-	        //if (isPrime(num)) {
-	       //     System.out.println(num + " is prime");
-	        //}
-	        //else {
-	           // System.out.println(num + " is not prime");
-	        //}
-		}while (isPrime(n)!= true);
+		}while (isPrime(n)!= true || n == 0);
+		System.out.println("Found");
 		return n;
     }
 }
