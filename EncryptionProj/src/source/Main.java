@@ -26,16 +26,29 @@ public class Main {
 		d = KeyGen.modInverse(coprimeE, EPF);
 
 	}
-
+	
+	public void reset() {
+		RSAmod = 0;
+		prime1 = 0;
+		prime2 = 0;
+		EPF = 0;
+		coprimeE = 0;
+		d = 0;
+	}
+	
 	public void checkKeyGen() {
-		Main main = new Main();
-		main.KeyGen();
-		if (d == coprimeE && d == 1 && d == 0) {
-			main.KeyGen();
+		KeyGen();
+		if (d == coprimeE || d == 0 || d == 1 ) {
+			reset();
+			KeyGen();
 		}
 	}
 
 	public void PrintString() {
+		System.out.println("***********************");
+		System.out.println("Generated values");
+		System.out.println("-----------------");
+		System.out.println("***********************");
 		System.out.println("First prime is: ");
 		System.out.println(prime1);
 		System.out.println("Second prime is: ");
@@ -48,6 +61,8 @@ public class Main {
 		System.out.println(coprimeE);
 		System.out.println("D: ");
 		System.out.println(d);
+		System.out.println("***********************");
+
 	}
 	
 	//Add garbage collection

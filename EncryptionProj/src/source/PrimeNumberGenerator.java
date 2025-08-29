@@ -29,7 +29,7 @@ public class PrimeNumberGenerator {
 			n = rand.nextInt(primeRange);
 			System.out.println(n);
 			int num = n;
-		}while (isPrime(n)!= true || n == 0);
+		}while (isPrime(n)!= true);
 		System.out.println("Found");
 		return n;
     }
